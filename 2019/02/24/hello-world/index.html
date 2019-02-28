@@ -15,6 +15,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!-- meta -->
   
+  
+  <meta name content>
+  
+  <meta name content>
+  
+  <meta name content>
+  
+  <meta name content>
+  
+  <meta name content>
+  
+  
   <!-- link -->
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
@@ -70,7 +82,7 @@
       			
   						<li>
 								<a id="home" class="nav flat-box" href="/">
-									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+									<i class="fas fa-archive fa-fw"></i>&nbsp;分页
 								</a>
 							</li>
       			
@@ -88,7 +100,7 @@
       			
   						<li>
 								<a id="home" class="nav flat-box" href="/">
-									<i class="fas fa-users fa-fw"></i>&nbsp;朋友
+									<i class="fas fa-user fa-fw"></i>&nbsp;关于
 								</a>
 							</li>
       			
@@ -135,7 +147,7 @@
               
                   <li>
 										<a id="home" class="nav flat-box" href="/">
-											<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+											<i class="fas fa-archive fa-fw"></i>&nbsp;分页
 										</a>
                   </li>
               
@@ -153,7 +165,7 @@
               
                   <li>
 										<a id="home" class="nav flat-box" href="/">
-											<i class="fas fa-users fa-fw"></i>&nbsp;朋友
+											<i class="fas fa-user fa-fw"></i>&nbsp;关于
 										</a>
                   </li>
               
@@ -282,6 +294,26 @@
 
 
 
+  <article class="post white-box comments">
+    <section class="article typo">
+      
+      
+        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+        
+        
+        
+          
+            <section id="comments">
+              <div id="valine_container" class="valine_thread">
+                <i class="fas fa-spinner fa-spin fa-fw"></i>
+              </div>
+            </section>
+          
+        
+      
+    </section>
+  </article>
+
 
 
 <script>
@@ -348,7 +380,7 @@
 <header class="pure">
   <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
   
-    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com/wiki/material-x/" title="https://xaoxuu.com/wiki/material-x/">
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://material-x/" title="https://material-x/">
     <i class="fas fa-question-circle fa-fw"></i></a>
   
 </header>
@@ -375,8 +407,6 @@
       
         
 
-
-
       
     
   
@@ -384,20 +414,28 @@
       
       
         
-  <section class="toc-wrapper">
+
+
+
+      
     
-<header class="pure">
-  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
   
-    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+    
+      
+      
+        <section class="list">
+  
+<header class="pure">
+  <div><i class=" fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;</div>
   
 </header>
 
-    <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
-    </div>
-  </section>
-
+  <div class="content pure">
+    <ul class="entry">
+      
+    </ul>
+  </div>
+</section>
 
       
     
@@ -412,7 +450,7 @@
     <footer id="footer" class="clearfix">
   
     <div class="footer">
-      <p>使用markdown,hhhh  好开心，好激动，感谢遇到的朋友们！</p>
+      <p>使用markdown,好开心，好激动，感谢遇到的朋友们！</p>
 
     </div>
     <br>
@@ -492,6 +530,44 @@
   
 
   
+  
+    
+      
+      
+      
+        
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            
+              <script src="/js/volantis.js"></script>
+            
+          
+          <script>
+          var GUEST_INFO = ['nick','mail','link'];
+          var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+          });
+          var notify = 'false' == true;
+          var verify = 'false' == true;
+          var valine = new Valine();
+          valine.init({
+            el: '#valine_container',
+            notify: notify,
+            verify: verify,
+            guest_info: guest_info,
+            
+            appId: "1rN07DpQRE12WD9Au1SuWCww-gzGzoHsz",
+            appKey: "EAyPrjSfiYnuRDiIpwczBeJ4",
+            placeholder: "快来评论吧~",
+            pageSize:'10',
+            avatar:'mp',
+            lang:'zh-cn',
+            highlight:''
+          })
+          </script>
+        
+      
+    
   
   
     <script src="/js/app.js"></script>
