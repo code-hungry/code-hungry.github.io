@@ -4,13 +4,98 @@
   
     
     <entry>
+      <title>FastDFS分布式文件系统</title>
+      <link href="/2019/03/01/%E6%9C%8D%E5%8A%A1%E5%99%A8/FastDFS/"/>
+      <url>/2019/03/01/%E6%9C%8D%E5%8A%A1%E5%99%A8/FastDFS/</url>
+      
+        <content type="html"><![CDATA[<p>介绍：</p><blockquote><p>FastDFS是用C语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、           线性扩容等级制，注重高可用性、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供上传、瞎子啊等服务。</p></blockquote><a id="more"></a><p>FastFDs架构：</p><blockquote><p>FastDFS架构包括Trackerserver和Storage server。客户端请求Tracker server进行文件文件上传、下载，通过Storage server调度最终由Storage server完成文件上传、下载。<br>Tracker server作用是负载均衡和调度，通过Tracker server在文件上传时可以根据一些策略找到Storage server提供文件上传服务，可以将tracker称为追踪服务器或调度服务器。<br>Strong server作用是文件存储，客户端上传的文件最终存储在Storage服务器上，Storage server没有实现自己的文件系统而是利用操作系统的文件系统来管理文件。可以将Storage称为存储服务器。<br><img src="C:\Users\Administrator\Desktop\markdown\FastDFS.png" alt="FastDFS"></p></blockquote><p>服务器端两个角色：</p><blockquote><p>Tracker：管理集群，tracker也可以实现集群。每个tracker节点地位平等。收集Storage集群的状态。<br>Storage：实际保存文件。Storage分为多个组，每个组之间保存的文件是不同的。每个组内部可以有多个成员，组成员内部保存的内容是一样的，组成员的地位是一致的，没有主从的概念。<br>文件上传的流程：<br><img src="C:\Users\Administrator\Desktop\markdown\文件上传流程.png" alt="文件上传流程"><br>总结：<br>客户端上传文件后存储服务器将文件ID返回给客户端，此文件ID用于以后访问该文件的索引信息。<br>文件索引信息包括：组名，虚拟磁盘路径，数据两级目录，文件名。<br><img src="C:\Users\Administrator\Desktop\markdown\组名.png" alt="组名"><br>组名：文件上传后所在的storage组名称，在文件上传成功后由Storage服务器返回，需要客户端自行保存<br>虚拟磁盘路径：Storage配置的虚拟路径，与从磁盘选项store_path*对应。如果配置了store_path0则是M00,如果配置了store_path1则是M01,以此类推。<br>数据两级目录：storage服务器在每个虚拟磁盘路径下创建的两级目录，用于存储文件。<br>文件名：与文件上传时不同。是由存储服务器根据特定信息生成，文件名包含：源存储服务器IP地址、文件创建时间戳、文件大小、随机数和文件拓展名等信息。</p></blockquote><p>FastDFS与传统保存图片的方式比较</p><blockquote><p>传统的上传保存图片的方式，只适合并发量小，用户少的情况，如果一旦次服务器宕机，保存的图片就全部销毁了。有很大的危险性。使用FastDFS不管那个服务器接收到图片，都会把图片上传到图片服务器，极大的降低了丢失文件的风险。</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> FastDFS </tag>
+            
+            <tag> 服务器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hibernate+Mybatis</title>
+      <link href="/2019/03/01/%E6%A1%86%E6%9E%B6/Hibernate%E5%92%8Cmybatis/"/>
+      <url>/2019/03/01/%E6%A1%86%E6%9E%B6/Hibernate%E5%92%8Cmybatis/</url>
+      
+        <content type="html"><![CDATA[<h6 id="Hibernate和Mybatis区别"><a href="#Hibernate和Mybatis区别" class="headerlink" title="Hibernate和Mybatis区别:"></a>Hibernate和Mybatis区别:</h6><blockquote><p>Hibernate和Mybatis同为ORM( Object Reational Mapping){对象关系映射}持久层框架，前者是全自动ORM框架，后者是半自动ORM框架。两者各有利弊，都有各自的应用的场景。</p><p>Hibernate封装严实，导致扩展性较于Mybatis弱，而Mybatis由编程人员写SQL语句，可扩展性高，但需要编程人员有一定的SQL语句基础。</p><p>如果要使hibernate发挥优良的性能，需要编程人员掌握一定优化hibernate的性能知识。</p><p>使用场景：hibernate使用中小型项目，Mybatis则较多应用于大型或者业务比较复杂的大型项目。</p></blockquote><a id="more"></a><h6 id="Hibernate的三种查询方式："><a href="#Hibernate的三种查询方式：" class="headerlink" title="Hibernate的三种查询方式："></a>Hibernate的三种查询方式：</h6><p>1.Query方式（依靠hql语句查询）</p><p>2.QBC方式（主要依靠Criteria对象和Restriction对象）</p><p>3.SqlQuery方式（可使用sql语句又能使用hal语句）</p><p>总结：</p><p>(1)</p><ul><li>单个结果集用uniqueResult()</li><li>多个结果集使用list()</li></ul><p>(2)</p><ul><li>setFirstResult()。第几行开始</li><li>setmaxResults()。展示几行</li></ul><h6 id="get和load查询及区别："><a href="#get和load查询及区别：" class="headerlink" title="get和load查询及区别："></a>get和load查询及区别：</h6><blockquote><p>1.get得到的是真正的对象，load的到的是代理对象（继承实体类，所以实体类不能别final修饰）</p><p>2.如果数据库没有该对象，get返回的是null，load会报异常</p><p>3.get立即加载，load延迟加载，即在真正使用对象的时候加载</p><blockquote><p>让load实现立即加载的方式：</p><p>实体类使用final修饰，或者在副配置文件中配置lazy=“false”（默认开启延迟加载）</p></blockquote></blockquote><h6 id="hibernate的缓存机制："><a href="#hibernate的缓存机制：" class="headerlink" title="hibernate的缓存机制："></a>hibernate的缓存机制：</h6><blockquote><p>1.一级缓存（在session中）</p><blockquote><p>着重于一级缓存中的缓存与快照的原理：</p><blockquote><p>缓存作用：用于提高查询效率</p><p>快照作用：用于更新数据，做对比使用</p><font color="red">快照的支持就是持久态对象直接可以通过修改对象属性更新数据库中的数据，不需要使用update方法</font></blockquote><p>快照的工作流程：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; &gt; hibernate从数据库中查询数据后返回ResultSet</span></span><br><span class="line"><span class="string">&gt; &gt; 然后hibernate将ResultSet中的内容组装成对象（两个）</span></span><br><span class="line"><span class="string">&gt; &gt; 组装成两个对象，一个放入缓存中，一个放入快照中</span></span><br><span class="line"><span class="string">&gt; &gt; 然后把缓存对象返回给程序</span></span><br><span class="line"><span class="string">&gt; &gt; 如果程序修改了缓存对象，然后事务就提交到hibernate</span></span><br><span class="line"><span class="string">&gt; &gt; 然后hibernate会对比缓存对象和快照对象，如果有变化就会同步到数据库，没有就不变</span></span><br><span class="line"><span class="string">&gt; &gt;</span></span><br></pre></td></tr></table></figure></blockquote></blockquote><blockquote><p>2.二级缓存（存在sessionFactory中）</p><p>分为：</p><blockquote><p>1&gt;类级别缓存区</p><blockquote><p>在二级缓存中，属性散列放置，获取时再重新组装。（依据：在两个session中获取的对象地址不同）</p></blockquote><p>2&gt;集合级别缓存</p><blockquote><p> 集合区存放的是集合元素的id，实体是在类级别缓存区（集合级别的缓存依赖类级别缓存）</p></blockquote><p>3&gt;更新时间缓存区</p><blockquote><p>一级缓存数据有更新时。同步更新二级缓存（通常情况下）<br>记录时间戳，比较时间记录戳，哪个时间戳离现在时间最近，依照此时间戳刷新缓存区的数据</p></blockquote><p>4&gt;查询缓存</p><blockquote><p>与query查询有关，优化query查询的缓存（又称三级缓存）</p></blockquote></blockquote></blockquote><h6 id="简谈hibernate性能的优化："><a href="#简谈hibernate性能的优化：" class="headerlink" title="简谈hibernate性能的优化："></a>简谈hibernate性能的优化：</h6><blockquote><p>使用数据库连接池如：C3P0、Druid、DBCP等</p><p>使用load延迟加载</p><p>利用hibernate的缓存机制</p><p>在分页展示时使用批量查询（batch-size=”查询个数”）</p><p>利用数据抓取策略优化hibernate性能：</p><blockquote><p>利用数据抓取策略具体：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; &gt; &lt;1&gt;一对多(在set节点设置 fetch=“”，Lazy=“”)</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;    fetch：（控制sql语句的格式）</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;        join     生成左外连接查询（对Query方式无效）</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         select   生成多条sql语句</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         subSelect  生成子查询语句</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         Lazy：（控制SQL语句的执行时机，对query方式有效）</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         false   关闭延迟加载</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         true   开启延迟加载</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         extra   比延迟加载还延迟</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt; &lt;2&gt;多对一（在多的一方xml中，mang-to-one节点设置 fetch=“”，Lazy=“ ）</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;    fetch： 同上</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         Lazy：</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         false  关闭延迟加载</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         proxy</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         no-proxy                                     </span></span><br><span class="line"><span class="string">&gt; &gt;</span></span><br></pre></td></tr></table></figure></blockquote></blockquote><h6 id="hibernate中对象的三种状态："><a href="#hibernate中对象的三种状态：" class="headerlink" title="hibernate中对象的三种状态："></a>hibernate中对象的三种状态：</h6><table><thead><tr><th style="text-align:center">状态</th><th style="text-align:center">与session是否有关</th><th style="text-align:center">是否有oid(序列化id)</th></tr></thead><tbody><tr><td style="text-align:center">瞬时态</td><td style="text-align:center">无关</td><td style="text-align:center">没有oid</td></tr><tr><td style="text-align:center">持久态</td><td style="text-align:center">有关</td><td style="text-align:center">有oid</td></tr><tr><td style="text-align:center">游离态</td><td style="text-align:center">无关</td><td style="text-align:center">存在oid</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 后端框架 </tag>
+            
+            <tag> Hibernate </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Strtus2</title>
+      <link href="/2019/03/01/%E6%A1%86%E6%9E%B6/Strtus2/"/>
+      <url>/2019/03/01/%E6%A1%86%E6%9E%B6/Strtus2/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端框架 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 框架 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>String、StringBuffer、StringBuilder的特点和区别？</title>
-      <link href="/2019/02/28/String/"/>
-      <url>/2019/02/28/String/</url>
+      <link href="/2019/02/28/java%E5%9F%BA%E7%A1%80/String/"/>
+      <url>/2019/02/28/java%E5%9F%BA%E7%A1%80/String/</url>
       
-        <content type="html"><![CDATA[<p>String:</p><blockquote><p>对字符串进行对象的封装。<br>特点：字符串一旦别初始化，就不可以被改变，存放在方法区的常量池中。</p></blockquote><p>StringBuffer：</p><blockquote><p>构造一个不带字符串的字符串缓冲区，初始容量为16个字符。</p></blockquote><p>特点：</p><blockquote><p>可以对字符串内容进行修改<br>是一个容器<br>是可变长度的<br>缓冲区中可以存储任意类型的数据<br>最终需要变成字符串</p></blockquote><p>StringBuilder:</p><blockquote><p>JDK1.5开始出现，构造一个不带字符的字符串生成器，初始容量为16个字符。<br>特点：该类被用作StringBuffer的一个简易替换，用在字符串缓冲区被单个线程使用的时候（这种情况最常用）</p></blockquote><h4 id="StringBuffer和StringBuilder的区别："><a href="#StringBuffer和StringBuilder的区别：" class="headerlink" title="StringBuffer和StringBuilder的区别："></a>StringBuffer和StringBuilder的区别：</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">StringBuffer</span>线程安全，StringBuilder线程不安全</span><br><span class="line">单线程操作，使用StringBUilder效率高，多线程操作，使用<span class="built_in">StringBuffer</span>安全</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>String:</p><blockquote><p>对字符串进行对象的封装。被final关键字修饰<br>特点：字符串一旦被初始化，就不可以被改变，存放在方法区的常量池中。</p></blockquote><p>StringBuffer：</p><blockquote><p>构造一个不带字符串的字符串缓冲区，初始容量为16个字符。</p></blockquote><p>特点：</p><blockquote><p>可以对字符串内容进行修改<br>是一个容器<br>是可变长度的<br>缓冲区中可以存储任意类型的数据<br>最终需要变成字符串</p></blockquote><p>StringBuilder:</p><blockquote><p>JDK1.5开始出现，构造一个不带字符的字符串生成器，初始容量为16个字符。<br>特点：该类被用作StringBuffer的一个简易替换，用在字符串缓冲区被单个线程使用的时候（这种情况最常用）</p></blockquote><a id="more"></a><h4 id="StringBuffer和StringBuilder的区别："><a href="#StringBuffer和StringBuilder的区别：" class="headerlink" title="StringBuffer和StringBuilder的区别："></a>StringBuffer和StringBuilder的区别：</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">StringBuffer</span>线程安全，StringBuilder线程不安全（因为<span class="built_in">StringBuffer</span>使用了Synchronized（同步锁）关键字）</span><br><span class="line">单线程操作，使用StringBUilder效率高，多线程操作，使用<span class="built_in">StringBuffer</span>安全</span><br><span class="line">执行速度为：<span class="built_in">StringBuffer</span>&gt;StringBuilder&gt;<span class="built_in">String</span></span><br></pre></td></tr></table></figure><p>三者使用场景：</p><blockquote><p>String：适合于少量的字符串操作的情况</p><p>StringBuffer：适用于多线程下在字符串缓冲区进行大量操作的情况</p><p>StringBuilder：适用于单线程下在字符串缓冲区进行大量操作的情况</p></blockquote>]]></content>
       
       
+      <categories>
+          
+          <category> JAVA </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JAVA基础 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -18,23 +103,10 @@
     
     <entry>
       <title>SpringMVC的原理及执行流程</title>
-      <link href="/2019/02/27/Java/"/>
-      <url>/2019/02/27/Java/</url>
+      <link href="/2019/02/27/%E6%A1%86%E6%9E%B6/SpringMVC/"/>
+      <url>/2019/02/27/%E6%A1%86%E6%9E%B6/SpringMVC/</url>
       
         <content type="html"><![CDATA[<h4 id="springmvc-其是一个基于MVC（Model-View-Controller）的web框架。"><a href="#springmvc-其是一个基于MVC（Model-View-Controller）的web框架。" class="headerlink" title="springmvc:  其是一个基于MVC（Model View Controller）的web框架。"></a>springmvc:  其是一个基于MVC（Model View Controller）的web框架。</h4><p>web请求处理流程：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">用户发送请求  到达前端控制器(DispatcherServlet)</span><br><span class="line">前端控制器根据请求信息（url）来请求处理器映射器（HandlerMapping）查找对应的处理器（<span class="keyword">Handler</span>,平时也叫Controller），返回一个执行器链给前端控制器</span><br><span class="line">前端控制器调用处理器适配器(HandlerAdapter)去执行 处理器适配器调用相应的处理器进行执行</span><br><span class="line">处理器执行完成后给处理器适配器返回一个ModelAndView</span><br><span class="line">处理器适配器向前端控制器返回ModelAndView</span><br><span class="line">前端控制器在请求视图解析器(<span class="keyword">View</span> resolver)进行视图解析，根据逻辑视图名解析成真正的视图（jsp）</span><br><span class="line">视图解析器向前端控制器返回<span class="keyword">view</span></span><br><span class="line">前端控制器进行视图渲染，视图渲染将模型数据填充到request域中</span><br><span class="line">前端控制器向用户响应结果</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello MyHouse MyWorld</title>
-      <link href="/2019/02/24/hello-world/"/>
-      <url>/2019/02/24/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>第一个博客的样板，以后可以安心总结了！</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
       
       
       

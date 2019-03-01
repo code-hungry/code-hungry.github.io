@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>SpringMVC的原理及执行流程 | 云深不知处</title>
+  <title>Category: 前端框架 | 云深不知处</title>
   
   
 
@@ -179,16 +179,53 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
-  
+            
+    <script>
+        window.subData= { title:'分类 : 前端框架'}
+    </script>
+
+
+
+
+  <section class="post-list">
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+
+
+      
+
+      
+
+      
+        
+          
+            <div class="post-wrapper">
+              <article class="post reveal ">
+    
 <section class="meta">
   
   
   <div class="meta" id="header-meta">
     
-      
-          <h1 class="title">SpringMVC的原理及执行流程</h1>
-      
+      <h2 class="title">
+          <a href="/2019/03/01/框架/Strtus2/">
+              
+                  Strtus2
+              
+          </a>
+      </h2>
     
 
     <div class="new-meta-box">
@@ -204,24 +241,21 @@
         <div class="new-meta-item date">
           <a class="notlink">
             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-            2019-02-27
+            2019-03-01
           </a>
         </div>
       
       
         
-      
-      
-        
-          <div class="new-meta-item browse busuanzi">
-            <a class="notlink">
-              <i class="fas fa-eye" aria-hidden="true"></i>
-              <span id="busuanzi_value_page_pv">
-                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-              </span>
+          
+          <div class="new-meta-item category">
+            <a href="/categories/前端框架/">
+              <i class="fas fa-folder-open" aria-hidden="true"></i>
+              前端框架
             </a>
           </div>
         
+      
       
       
     </div>
@@ -230,105 +264,39 @@
 </section>
 
     <section class="article typo">
-      <div class="article-entry" itemprop="articleBody">
-        <h4 id="springmvc-其是一个基于MVC（Model-View-Controller）的web框架。"><a href="#springmvc-其是一个基于MVC（Model-View-Controller）的web框架。" class="headerlink" title="springmvc:  其是一个基于MVC（Model View Controller）的web框架。"></a>springmvc:  其是一个基于MVC（Model View Controller）的web框架。</h4><p>web请求处理流程：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">用户发送请求  到达前端控制器(DispatcherServlet)</span><br><span class="line">前端控制器根据请求信息（url）来请求处理器映射器（HandlerMapping）查找对应的处理器（<span class="keyword">Handler</span>,平时也叫Controller），返回一个执行器链给前端控制器</span><br><span class="line">前端控制器调用处理器适配器(HandlerAdapter)去执行 处理器适配器调用相应的处理器进行执行</span><br><span class="line">处理器执行完成后给处理器适配器返回一个ModelAndView</span><br><span class="line">处理器适配器向前端控制器返回ModelAndView</span><br><span class="line">前端控制器在请求视图解析器(<span class="keyword">View</span> resolver)进行视图解析，根据逻辑视图名解析成真正的视图（jsp）</span><br><span class="line">视图解析器向前端控制器返回<span class="keyword">view</span></span><br><span class="line">前端控制器进行视图渲染，视图渲染将模型数据填充到request域中</span><br><span class="line">前端控制器向用户响应结果</span><br></pre></td></tr></table></figure>
-
-      </div>
         
-          <section class="meta" id="footer-meta">
-            <hr>
-            <div class="new-meta-box">
-              
-                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-02-28T00:39:35+08:00">
-                  <a class="notlink">
-                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-                    2019-02-28
-                  </a>
-                </div>
-              
-              
-              
-            </div>
-          </section>
         
 
         
-            <div class="prev-next">
+            <div class="full-width auto-padding tags">
                 
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
-                            <h4>
-                                <a href="/2019/02/28/String/" rel="prev" title="String、StringBuffer、StringBuilder的特点和区别？">
-                                  
-                                      String、StringBuffer、StringBuilder的特点和区别？
-                                  
-                                </a>
-                            </h4>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/02/24/hello-world/" rel="prev" title="Hello MyHouse MyWorld">
-                                    
-                                        Hello MyHouse MyWorld
-                                    
-                                </a>
-                            </h4>
-                            
-                        </span>
-                    </section>
+                    <a href="/tags/框架/"><i class="fas fa-hashtag fa-fw"></i>框架</a>
                 
             </div>
         
-
     </section>
-
 </article>
 
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-<br>
-
-<!-- 显示推荐文章和评论 -->
-
-
-
-  <article class="post white-box comments">
-    <section class="article typo">
-      
-      
-        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
-        
-        
-        
-          
-            <section id="comments">
-              <div id="valine_container" class="valine_thread">
-                <i class="fas fa-spinner fa-spin fa-fw"></i>
-              </div>
-            </section>
+            </div>
           
         
       
-    </section>
-  </article>
+
+  </section>
 
 
 
-<script>
-    window.subData = {
-        title: 'SpringMVC的原理及执行流程',
-        tools: true
-    }
-</script>
+
+
+
+  
+
+  <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+  
+
+  
+
+
 
 
         </div>
@@ -368,13 +336,69 @@
           
         
           
-            <a href="https://music.163.com/#/user/home?id=268350523" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+            <a href="https://music.163.com/#/user/home?id=268350523" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-headphones-alt" aria-hidden="true"></i></a>
           
         
       </div>
     
   </div>
 </section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+  <section class="category">
+    
+<header class="pure">
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;所有分类</div>
+  
+</header>
+
+    <div class="content pure">
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/JAVA/" href="/categories/JAVA/"><div class="name">JAVA</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/前端框架/" href="/categories/前端框架/"><div class="name">前端框架</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/框架/" href="/categories/框架/"><div class="name">框架</div><div class="badge">(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class="tagcloud">
+    
+<header class="pure">
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+</header>
+
+    <div class="content pure">
+      <a href="/tags/FastDFS/" style="font-size: 14px; color: #999">FastDFS</a> <a href="/tags/Hibernate/" style="font-size: 14px; color: #999">Hibernate</a> <a href="/tags/JAVA基础/" style="font-size: 14px; color: #999">JAVA基础</a> <a href="/tags/后端框架/" style="font-size: 14px; color: #999">后端框架</a> <a href="/tags/服务器/" style="font-size: 14px; color: #999">服务器</a> <a href="/tags/框架/" style="font-size: 14px; color: #999">框架</a>
+    </div>
+  </section>
+
 
       
     
@@ -393,26 +417,10 @@
 </header>
 
   <div class="content pure">
-    <p>本小屋使用 [Material X]</p>
+    <p>本小屋使用 [Material X]，这是我的博客，简约风。</p>
 
   </div>
 </section>
-
-      
-    
-  
-    
-      
-      
-        
-
-      
-    
-  
-    
-      
-      
-        
 
       
     
@@ -457,7 +465,7 @@
     <footer id="footer" class="clearfix">
   
     <div class="footer">
-      <p>使用markdown,好开心，好激动，感谢遇到的朋友们！</p>
+      <p>使用markdown语法编辑,好开心，好激动，感谢遇到的朋友们！</p>
 
     </div>
     <br>
@@ -474,14 +482,12 @@
         
       
         
-          <a href="https://music.163.com/#/user/home?id=268350523" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+          <a href="https://music.163.com/#/user/home?id=268350523" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external"></a>
         
       
     </div>
   
   <br>
-  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
   <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
   </div>
 </footer>
@@ -539,42 +545,6 @@
   
   
     
-      
-      
-      
-        
-          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          
-            
-              <script src="/js/volantis.js"></script>
-            
-          
-          <script>
-          var GUEST_INFO = ['nick','mail','link'];
-          var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-            return GUEST_INFO.indexOf(item) > -1
-          });
-          var notify = 'false' == true;
-          var verify = 'false' == true;
-          var valine = new Valine();
-          valine.init({
-            el: '#valine_container',
-            notify: notify,
-            verify: verify,
-            guest_info: guest_info,
-            
-            appId: "1rN07DpQRE12WD9Au1SuWCww-gzGzoHsz",
-            appKey: "EAyPrjSfiYnuRDiIpwczBeJ4",
-            placeholder: "快来评论吧~",
-            pageSize:'10',
-            avatar:'mp',
-            lang:'zh-cn',
-            highlight:''
-          })
-          </script>
-        
-      
-    
   
   
     <script src="/js/app.js"></script>
@@ -589,5 +559,7 @@
 
 
     <script>setLoadingBarProgress(100);</script>
+	<!-- 小红心 -->
+    <script type="text/javascript" src="/js/love.js"></script>
 </body>
 </html>
