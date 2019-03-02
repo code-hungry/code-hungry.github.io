@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Hibernate+Mybatis | 云深不知处</title>
+  <title>404 | 云深不知处</title>
   
   
 
@@ -179,7 +179,7 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+            <article id="page" class="post white-box article-type-page" itemscope itemprop="blogPost">
   
 <section class="meta">
   
@@ -187,7 +187,7 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">Hibernate+Mybatis</h1>
+          <h1 class="title">404</h1>
       
     
 
@@ -204,20 +204,10 @@
         <div class="new-meta-item date">
           <a class="notlink">
             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-            2019-03-01
+            2019-03-02
           </a>
         </div>
       
-      
-        
-          
-          <div class="new-meta-item category">
-            <a href="/categories/框架/">
-              <i class="fas fa-folder-open" aria-hidden="true"></i>
-              框架
-            </a>
-          </div>
-        
       
       
         
@@ -239,174 +229,10 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h6 id="Hibernate和Mybatis区别"><a href="#Hibernate和Mybatis区别" class="headerlink" title="Hibernate和Mybatis区别:"></a>Hibernate和Mybatis区别:</h6><blockquote>
-<p>Hibernate和Mybatis同为ORM( Object Reational Mapping){对象关系映射}持久层框架，前者是全自动ORM框架，后者是半自动ORM框架。两者各有利弊，都有各自的应用的场景。</p>
-<p>Hibernate封装严实，导致扩展性较于Mybatis弱，而Mybatis由编程人员写SQL语句，可扩展性高，但需要编程人员有一定的SQL语句基础。</p>
-<p>如果要使hibernate发挥优良的性能，需要编程人员掌握一定优化hibernate的性能知识。</p>
-<p>使用场景：hibernate使用中小型项目，Mybatis则较多应用于大型或者业务比较复杂的大型项目。</p>
-</blockquote>
-<a id="more"></a>
-<h6 id="Hibernate的三种查询方式："><a href="#Hibernate的三种查询方式：" class="headerlink" title="Hibernate的三种查询方式："></a>Hibernate的三种查询方式：</h6><p>1.Query方式（依靠hql语句查询）</p>
-<p>2.QBC方式（主要依靠Criteria对象和Restriction对象）</p>
-<p>3.SqlQuery方式（可使用sql语句又能使用hal语句）</p>
-<p>总结：</p>
-<p>(1)</p>
-<ul>
-<li>单个结果集用uniqueResult()</li>
-<li>多个结果集使用list()</li>
-</ul>
-<p>(2)</p>
-<ul>
-<li>setFirstResult()。第几行开始</li>
-<li>setmaxResults()。展示几行</li>
-</ul>
-<h6 id="get和load查询及区别："><a href="#get和load查询及区别：" class="headerlink" title="get和load查询及区别："></a>get和load查询及区别：</h6><blockquote>
-<p>1.get得到的是真正的对象，load的到的是代理对象（继承实体类，所以实体类不能别final修饰）</p>
-<p>2.如果数据库没有该对象，get返回的是null，load会报异常</p>
-<p>3.get立即加载，load延迟加载，即在真正使用对象的时候加载</p>
-<blockquote>
-<p>让load实现立即加载的方式：</p>
-<p>实体类使用final修饰，或者在副配置文件中配置lazy=“false”（默认开启延迟加载）</p>
-</blockquote>
-</blockquote>
-<h6 id="hibernate的缓存机制："><a href="#hibernate的缓存机制：" class="headerlink" title="hibernate的缓存机制："></a>hibernate的缓存机制：</h6><blockquote>
-<p>1.一级缓存（在session中）</p>
-<blockquote>
-<p>着重于一级缓存中的缓存与快照的原理：</p>
-<blockquote>
-<p>缓存作用：用于提高查询效率</p>
-<p>快照作用：用于更新数据，做对比使用</p>
-<font color="red">快照的支持就是持久态对象直接可以通过修改对象属性更新数据库中的数据，不需要使用update方法</font>
-</blockquote>
-<p>快照的工作流程：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; &gt; hibernate从数据库中查询数据后返回ResultSet</span></span><br><span class="line"><span class="string">&gt; &gt; 然后hibernate将ResultSet中的内容组装成对象（两个）</span></span><br><span class="line"><span class="string">&gt; &gt; 组装成两个对象，一个放入缓存中，一个放入快照中</span></span><br><span class="line"><span class="string">&gt; &gt; 然后把缓存对象返回给程序</span></span><br><span class="line"><span class="string">&gt; &gt; 如果程序修改了缓存对象，然后事务就提交到hibernate</span></span><br><span class="line"><span class="string">&gt; &gt; 然后hibernate会对比缓存对象和快照对象，如果有变化就会同步到数据库，没有就不变</span></span><br><span class="line"><span class="string">&gt; &gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>2.二级缓存（存在sessionFactory中）</p>
-<p>分为：</p>
-<blockquote>
-<p>1&gt;类级别缓存区</p>
-<blockquote>
-<p>在二级缓存中，属性散列放置，获取时再重新组装。（依据：在两个session中获取的对象地址不同）</p>
-</blockquote>
-<p>2&gt;集合级别缓存</p>
-<blockquote>
-<p> 集合区存放的是集合元素的id，实体是在类级别缓存区（集合级别的缓存依赖类级别缓存）</p>
-</blockquote>
-<p>3&gt;更新时间缓存区</p>
-<blockquote>
-<p>一级缓存数据有更新时。同步更新二级缓存（通常情况下）<br>记录时间戳，比较时间记录戳，哪个时间戳离现在时间最近，依照此时间戳刷新缓存区的数据</p>
-</blockquote>
-<p>4&gt;查询缓存</p>
-<blockquote>
-<p>与query查询有关，优化query查询的缓存（又称三级缓存）</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h6 id="简谈hibernate性能的优化："><a href="#简谈hibernate性能的优化：" class="headerlink" title="简谈hibernate性能的优化："></a>简谈hibernate性能的优化：</h6><blockquote>
-<p>使用数据库连接池如：C3P0、Druid、DBCP等</p>
-<p>使用load延迟加载</p>
-<p>利用hibernate的缓存机制</p>
-<p>在分页展示时使用批量查询（batch-size=”查询个数”）</p>
-<p>利用数据抓取策略优化hibernate性能：</p>
-<blockquote>
-<p>利用数据抓取策略具体：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; &gt; &lt;1&gt;一对多(在set节点设置 fetch=“”，Lazy=“”)</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;    fetch：（控制sql语句的格式）</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;        join     生成左外连接查询（对Query方式无效）</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         select   生成多条sql语句</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         subSelect  生成子查询语句</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         Lazy：（控制SQL语句的执行时机，对query方式有效）</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         false   关闭延迟加载</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         true   开启延迟加载</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         extra   比延迟加载还延迟</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt; &lt;2&gt;多对一（在多的一方xml中，mang-to-one节点设置 fetch=“”，Lazy=“ ）</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;    fetch： 同上</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         Lazy：</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         false  关闭延迟加载</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         proxy</span></span><br><span class="line"><span class="string">&gt; &gt; </span></span><br><span class="line"><span class="string">&gt; &gt;         no-proxy                                     </span></span><br><span class="line"><span class="string">&gt; &gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</blockquote>
-<h6 id="hibernate中对象的三种状态："><a href="#hibernate中对象的三种状态：" class="headerlink" title="hibernate中对象的三种状态："></a>hibernate中对象的三种状态：</h6><table>
-<thead>
-<tr>
-<th style="text-align:center">状态</th>
-<th style="text-align:center">与session是否有关</th>
-<th style="text-align:center">是否有oid(序列化id)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">瞬时态</td>
-<td style="text-align:center">无关</td>
-<td style="text-align:center">没有oid</td>
-</tr>
-<tr>
-<td style="text-align:center">持久态</td>
-<td style="text-align:center">有关</td>
-<td style="text-align:center">有oid</td>
-</tr>
-<tr>
-<td style="text-align:center">游离态</td>
-<td style="text-align:center">无关</td>
-<td style="text-align:center">存在oid</td>
-</tr>
-</tbody>
-</table>
-
+        
       </div>
         
-          <section class="meta" id="footer-meta">
-            <hr>
-            <div class="new-meta-box">
-              
-                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-03-01T23:34:42+08:00">
-                  <a class="notlink">
-                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-                    2019-03-01
-                  </a>
-                </div>
-              
-              
-                
-                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/后端框架/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;后端框架</a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Hibernate/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;Hibernate</a></div>
-              
-              
-            </div>
-          </section>
-        
 
-        
-            <div class="prev-next">
-                
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
-                            <h4>
-                                <a href="/2019/03/01/服务器/FastDFS/" rel="prev" title="FastDFS分布式文件系统">
-                                  
-                                      FastDFS分布式文件系统
-                                  
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/FastDFS/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>FastDFS</a> <a class="tag" href="/tags/服务器/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>服务器</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/03/01/框架/Strtus2/" rel="prev" title="Strtus2">
-                                    
-                                        Strtus2
-                                    
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/框架/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>框架</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-            </div>
         
 
     </section>
@@ -446,11 +272,10 @@
 
 <script>
     window.subData = {
-        title: 'Hibernate+Mybatis',
+        title: '404',
         tools: true
     }
 </script>
-
 
         </div>
         <aside class='l_side'>
@@ -504,20 +329,6 @@
       
       
         
-  <section class="toc-wrapper">
-    
-<header class="pure">
-  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
-  
-    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
-  
-</header>
-
-    <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#Hibernate和Mybatis区别"><span class="toc-text">Hibernate和Mybatis区别:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Hibernate的三种查询方式："><span class="toc-text">Hibernate的三种查询方式：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#get和load查询及区别："><span class="toc-text">get和load查询及区别：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#hibernate的缓存机制："><span class="toc-text">hibernate的缓存机制：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#简谈hibernate性能的优化："><span class="toc-text">简谈hibernate性能的优化：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#hibernate中对象的三种状态："><span class="toc-text">hibernate中对象的三种状态：</span></a></li></ol>
-    </div>
-  </section>
-
 
       
     
