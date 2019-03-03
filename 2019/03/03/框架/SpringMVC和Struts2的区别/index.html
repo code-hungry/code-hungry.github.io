@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Category: 后端框架 | 云深不知处</title>
+  <title>SpringMVC和Struts2的区别？ | 云深不知处</title>
   
   
 
@@ -181,57 +181,16 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            
-    <script>
-        window.subData= { title:'分类 : 后端框架'}
-    </script>
-
-
-
-
-  <section class="post-list">
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-
-
-
-      
-
-      
-
-      
-        
-          
-            <div class="post-wrapper">
-              <article class="post reveal ">
-    
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
 <section class="meta">
   
   
   <div class="meta" id="header-meta">
     
-      <h2 class="title">
-          <a href="/2019/03/02/框架/Mybatis总结/">
-              
-                  Mybatis总结
-              
-          </a>
-      </h2>
+      
+          <h1 class="title">SpringMVC和Struts2的区别？</h1>
+      
     
 
     <div class="new-meta-box">
@@ -247,7 +206,7 @@
         <div class="new-meta-item date">
           <a class="notlink">
             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-            2019-03-02
+            2019-03-03
           </a>
         </div>
       
@@ -255,13 +214,24 @@
         
           
           <div class="new-meta-item category">
-            <a href="/categories/后端框架/">
+            <a href="/categories/框架，总结/">
               <i class="fas fa-folder-open" aria-hidden="true"></i>
-              后端框架
+              框架，总结
             </a>
           </div>
         
       
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class="notlink">
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
       
       
     </div>
@@ -270,49 +240,122 @@
 </section>
 
     <section class="article typo">
-        <h4 id="Mybatis简介"><a href="#Mybatis简介" class="headerlink" title="Mybatis简介:"></a>Mybatis简介:</h4><p>​    Mybatis是ORM半自动持久层框架。原名ibatis,经谷歌收购后改名Mybatis。</p>
-<h4 id="Mybatis的优势和使用场景？"><a href="#Mybatis的优势和使用场景？" class="headerlink" title="Mybatis的优势和使用场景？"></a>Mybatis的优势和使用场景？</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解决JDBC输入硬编码和输出硬编码问题，将输出结果映射为一个java的对象。</span><br><span class="line">与Hibernate相比可扩张性更高，大多用于大型以及业务复杂的项目中。</span><br></pre></td></tr></table></figure>
+      <div class="article-entry" itemprop="articleBody">
+        <h4 id="SpringMVC和Struts2对比"><a href="#SpringMVC和Struts2对比" class="headerlink" title="SpringMVC和Struts2对比"></a>SpringMVC和Struts2对比</h4><h6 id="1-拦截级别"><a href="#1-拦截级别" class="headerlink" title="1.拦截级别"></a>1.拦截级别</h6><blockquote>
+<p>Struts2是类级别的拦截，一个类对应一个request上下文。</p>
+<p>SpringMVC是方法级别的拦截，一个方法对应一个request上下文，而方法同时又跟一个URL对应，SpringMVC更容易实现restful url。</p>
+</blockquote>
+<a id="more"></a>
+<h6 id="2-数据独立性"><a href="#2-数据独立性" class="headerlink" title="2.数据独立性"></a>2.数据独立性</h6><blockquote>
+<p>由1中的原因，SpringMVC方法之间基本是独立的，独享request、response数据，请求数据通过参数获得，处理结果通过ModelMap交回给框架，方法之间不共享变量。</p>
+<p>而Struts2搞得有点乱，虽然其方法之间也是独立的，但其所有Action变量是共享的，这不会影响程序运行，但是给编码、读程序带来麻烦，每来一次请求就需要创建一个Action，一个Action对象对应一个request上下文。</p>
+</blockquote>
+<h6 id="3-拦截器机制"><a href="#3-拦截器机制" class="headerlink" title="3.拦截器机制"></a>3.拦截器机制</h6><blockquote>
+<p>拦截器实现机制上，Struts2有自己的interceptor机制，SpringMVC用的是独立的AOP方式，这样导致Struts2配置文件量比SpringMVC大。</p>
+</blockquote>
+<h6 id="4-内存消耗"><a href="#4-内存消耗" class="headerlink" title="4.内存消耗"></a>4.内存消耗</h6><blockquote>
+<p>由于Struts2需要针对每一个request进行封装，把request、session等servlet生命周期变量封装成一个Map，供给每一个Action使用，并保证线程安全，所以还是比较耗费内存。</p>
+</blockquote>
+<h6 id="5-入口不同"><a href="#5-入口不同" class="headerlink" title="5.入口不同"></a>5.入口不同</h6><blockquote>
+<p>SpringMVC的入口是servlet，而Struts是filter（filter和servlet是不同的，<u>以后总结filter与servlet</u>）</p>
+</blockquote>
+<h6 id="6-对Ajax的支持"><a href="#6-对Ajax的支持" class="headerlink" title="6.对Ajax的支持"></a>6.对Ajax的支持</h6><blockquote>
+<p>SpringMVC集成了Ajax，使用起来非常方便，只需要一个注解@ResponseBody就可以实现，然后直接返回响应文本即可(只支持异步调用)。</p>
+<p>Struts2拦截器集成了Ajax，在Action处理时一般必须安装插件或自己写代码集成进去，使用起来相对不方便。</p>
+</blockquote>
+<h6 id="7-设计思想"><a href="#7-设计思想" class="headerlink" title="7.设计思想"></a>7.设计思想</h6><blockquote>
+<p>Struts2更加符合OOP思想，SpringMVC就比较谨慎，在Servlet上扩展。</p>
+</blockquote>
+<h5 id="更多内容看SpringMVC-Struts2。"><a href="#更多内容看SpringMVC-Struts2。" class="headerlink" title="更多内容看SpringMVC,Struts2。"></a>更多内容看<a href="https://xunmi.tk/2019/02/27/%E6%A1%86%E6%9E%B6/SpringMVC/" target="_blank" rel="noopener">SpringMVC</a>,<a href="https://xunmi.tk/2019/03/01/%E6%A1%86%E6%9E%B6/Strtus2/" target="_blank" rel="noopener">Struts2</a>。</h5>
+      </div>
         
-            <div class="readmore">
-                <a href="/2019/03/02/框架/Mybatis总结/" class="flat-box">
-                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-                    阅读全文
-                </a>
+          <section class="meta" id="footer-meta">
+            <hr>
+            <div class="new-meta-box">
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-03-03T23:23:40+08:00">
+                  <a class="notlink">
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2019-03-03
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/SpringMVC/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;SpringMVC</a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Struts2/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;Struts2</a></div>
+              
+              
             </div>
+          </section>
         
 
         
-            <div class="full-width auto-padding tags">
+            <div class="prev-next">
                 
-                    <a href="/tags/框架/"><i class="fas fa-hashtag fa-fw"></i>框架</a>
                 
-                    <a href="/tags/Mybatis/"><i class="fas fa-hashtag fa-fw"></i>Mybatis</a>
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/03/02/框架/Mybatis总结/" rel="prev" title="Mybatis总结">
+                                    
+                                        Mybatis总结
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/框架/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>框架</a> <a class="tag" href="/tags/Mybatis/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Mybatis</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
             </div>
         
+
     </section>
+
 </article>
 
-            </div>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      
+      
+        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+        
+        
+        
+          
+            <section id="comments">
+              <div id="valine_container" class="valine_thread">
+                <i class="fas fa-spinner fa-spin fa-fw"></i>
+              </div>
+            </section>
           
         
       
-
-  </section>
-
-
+    </section>
+  </article>
 
 
 
-
-  
-
-  <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-  
-
-  
-
-
+<script>
+    window.subData = {
+        title: 'SpringMVC和Struts2的区别？',
+        tools: true
+    }
+</script>
 
 
         </div>
@@ -367,6 +410,20 @@
       
       
         
+  <section class="toc-wrapper">
+    
+<header class="pure">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class="content pure">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringMVC和Struts2对比"><span class="toc-text">SpringMVC和Struts2对比</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-拦截级别"><span class="toc-text">1.拦截级别</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-数据独立性"><span class="toc-text">2.数据独立性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-拦截器机制"><span class="toc-text">3.拦截器机制</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-内存消耗"><span class="toc-text">4.内存消耗</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-入口不同"><span class="toc-text">5.入口不同</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-对Ajax的支持"><span class="toc-text">6.对Ajax的支持</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-设计思想"><span class="toc-text">7.设计思想</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#更多内容看SpringMVC-Struts2。"><span class="toc-text">更多内容看SpringMVC,Struts2。</span></a></li></ol>
+    </div>
+  </section>
+
 
       
     
@@ -589,6 +646,42 @@
 
   
   
+    
+      
+      
+      
+        
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          
+            
+              <script src="/js/volantis.js"></script>
+            
+          
+          <script>
+          var GUEST_INFO = ['nick','mail','link'];
+          var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+          });
+          var notify = 'false' == true;
+          var verify = 'false' == true;
+          var valine = new Valine();
+          valine.init({
+            el: '#valine_container',
+            notify: notify,
+            verify: verify,
+            guest_info: guest_info,
+            
+            appId: "gcALRhcXSxs79KmaJhouD0Ur-gzGzoHsz",
+            appKey: "o4oNucLNWjLPh6Wd2WX7U9Xn",
+            placeholder: "快来评论吧~",
+            pageSize:'6',
+            avatar:'mp',
+            lang:'zh-cn',
+            highlight:''
+          })
+          </script>
+        
+      
     
   
   
