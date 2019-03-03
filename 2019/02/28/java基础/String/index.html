@@ -75,7 +75,7 @@
           
   					
   						<li>
-								<a id="home" class="nav flat-box" href="/home/">
+								<a id="home" class="nav flat-box" href="/">
 									<i class="fas fa-vihara fa-fw"></i>&nbsp;主页
 								</a>
 							</li>
@@ -140,7 +140,7 @@
           
               
                   <li>
-										<a id="home" class="nav flat-box" href="/home/">
+										<a id="home" class="nav flat-box" href="/">
 											<i class="fas fa-vihara fa-fw"></i>&nbsp;主页
 										</a>
                   </li>
@@ -256,7 +256,7 @@
 <p>JDK1.5开始出现，构造一个不带字符的字符串生成器，初始容量为16个字符。<br>特点：该类被用作StringBuffer的一个简易替换，用在字符串缓冲区被单个线程使用的时候（这种情况最常用）</p>
 </blockquote>
 <a id="more"></a>
-<h4 id="StringBuffer和StringBuilder的区别："><a href="#StringBuffer和StringBuilder的区别：" class="headerlink" title="StringBuffer和StringBuilder的区别："></a>StringBuffer和StringBuilder的区别：</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">StringBuffer</span>线程安全，StringBuilder线程不安全（因为<span class="built_in">StringBuffer</span>使用了Synchronized（同步锁）关键字）</span><br><span class="line">单线程操作，使用StringBUilder效率高，多线程操作，使用<span class="built_in">StringBuffer</span>安全</span><br><span class="line">执行速度为：<span class="built_in">StringBuffer</span>&gt;StringBuilder&gt;<span class="built_in">String</span></span><br></pre></td></tr></table></figure>
+<h4 id="StringBuffer和StringBuilder的区别："><a href="#StringBuffer和StringBuilder的区别：" class="headerlink" title="StringBuffer和StringBuilder的区别："></a>StringBuffer和StringBuilder的区别：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer线程安全，StringBuilder线程不安全（因为StringBuffer使用了Synchronized（同步锁）关键字）</span><br><span class="line">单线程操作，使用StringBUilder效率高，多线程操作，使用StringBuffer安全</span><br><span class="line">执行速度为：StringBuffer&gt;StringBuilder&gt;String</span><br></pre></td></tr></table></figure>
 <p>三者使用场景：</p>
 <blockquote>
 <p>String：适合于少量的字符串操作的情况</p>
