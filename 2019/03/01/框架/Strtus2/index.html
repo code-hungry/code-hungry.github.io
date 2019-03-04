@@ -241,23 +241,54 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        
+        <h4 id="Struts2简介："><a href="#Struts2简介：" class="headerlink" title="Struts2简介："></a>Struts2简介：</h4><h6 id="​1-概念：轻量级的MVC框架，主要解决请求分发的问题，重心在控制层和表现层。低侵入性，与业务代码的耦合度很低。"><a href="#​1-概念：轻量级的MVC框架，主要解决请求分发的问题，重心在控制层和表现层。低侵入性，与业务代码的耦合度很低。" class="headerlink" title="​1.概念：轻量级的MVC框架，主要解决请求分发的问题，重心在控制层和表现层。低侵入性，与业务代码的耦合度很低。"></a>​1.概念：轻量级的MVC框架，主要解决请求分发的问题，重心在控制层和表现层。低侵入性，与业务代码的耦合度很低。</h6><a id="more"></a>
+<h6 id="2-Struts2特点："><a href="#2-Struts2特点：" class="headerlink" title="2.Struts2特点："></a>2.Struts2特点：</h6><ul>
+<li>项目开源，扩张方便</li>
+<li>提供Exception处理机制</li>
+<li>Result方式的页面导航，通过Result标签很容易实现重定向和页面跳转</li>
+<li>通过简单、集中的配置调度业务类，使得配置和修改都十分方便</li>
+<li>提供简单、统一的表达式语言来访问所有可供访问的数据</li>
+<li>提供标准、强大的验证框架和国际化框架</li>
+<li>提供良好的Ajax支持</li>
+<li>拥有简单的插件，只需要放入响应的jar包，任何人都可以扩展Struts2框架</li>
+</ul>
+<h6 id="3-与Servlet对比："><a href="#3-与Servlet对比：" class="headerlink" title="3.与Servlet对比："></a>3.与Servlet对比：</h6><p>​       优点：业务代码解耦，提高开发效率。</p>
+<p>​        缺点：执行效率低，需要使用反射、解析XML等技术手段，结构复杂。</p>
+<h4 id="Struts2的工作流程及流程图"><a href="#Struts2的工作流程及流程图" class="headerlink" title="Struts2的工作流程及流程图"></a>Struts2的工作流程及流程图</h4><h6 id="以下是Struts2的工作流程图"><a href="#以下是Struts2的工作流程图" class="headerlink" title="以下是Struts2的工作流程图"></a>以下是Struts2的工作流程图</h6><p><img src="https://res.cloudinary.com/dumhmvszz/image/upload/v1551710253/JAVA-struts2/struts2.png" alt></p>
+<h6 id="Struts2工作流程："><a href="#Struts2工作流程：" class="headerlink" title="Struts2工作流程："></a>Struts2工作流程：</h6><blockquote>
+<p>1.客户端（Client）向Action发送一个请求（Request）</p>
+<p>2.容器（Container）通过web.xml映射请求,并获取核心过滤器（StrutsPrepareAndExecuteFilter或FilterDispatcher）</p>
+<p>3.容器（Container）调用核心过滤器，核心过滤器通过动作映射（ActionMapper）获得Action信息</p>
+<p>4.然后核心过滤器（Controller）再调用动作类代理类（ActionProxy），由ActionProxy读取struts.xml文件获取Action和拦截器栈（Interceptor stack）的配置信息</p>
+<p>5.ActionProxy把Request请求传递给调用者（ActionInvocation）</p>
+<p>6.调用者（ActionInvocation)依次调用Action和拦截器（interceptor）,再根据Action的配置信息生成Result</p>
+<p>7.Result信息返回给调用者（ActionInvocation），产生一个HttpServletResponse响应</p>
+<p>8.产生的HTTPServletResponse响应发送给客户端，客户端上展示响应内容。</p>
+</blockquote>
+<h4 id="不同框架实现MVC的方式"><a href="#不同框架实现MVC的方式" class="headerlink" title="不同框架实现MVC的方式"></a>不同框架实现MVC的方式</h4><p>Servlet：</p>
+<p><img src="https://res.cloudinary.com/dumhmvszz/image/upload/v1551710051/JAVA-struts2/servlet.png" alt></p>
+<p>Struts2:</p>
+<p><img src="https://res.cloudinary.com/dumhmvszz/image/upload/v1551710357/JAVA-struts2/struts2_1.png" alt></p>
+<p>Spring:</p>
+<p><img src="https://res.cloudinary.com/dumhmvszz/image/upload/v1551710058/JAVA-struts2/spring.png" alt></p>
+<p><a href="https://xunmi.tk/2019/02/27/%E6%A1%86%E6%9E%B6/SpringMVC/" target="_blank" rel="noopener"><em>点击查看SpringMVC知识</em></a></p>
+
       </div>
         
           <section class="meta" id="footer-meta">
             <hr>
             <div class="new-meta-box">
               
-                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-03-01T17:59:45+08:00">
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-03-04T22:45:33+08:00">
                   <a class="notlink">
                     <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-                    2019-03-01
+                    2019-03-04
                   </a>
                 </div>
               
               
                 
-                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/框架/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;框架</a></div>
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/框架/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;框架</a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Struts2/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;Struts2</a></div>
               
               
             </div>
@@ -404,6 +435,20 @@
       
       
         
+  <section class="toc-wrapper">
+    
+<header class="pure">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class="content pure">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Struts2简介："><span class="toc-text">Struts2简介：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#​1-概念：轻量级的MVC框架，主要解决请求分发的问题，重心在控制层和表现层。低侵入性，与业务代码的耦合度很低。"><span class="toc-text">​1.概念：轻量级的MVC框架，主要解决请求分发的问题，重心在控制层和表现层。低侵入性，与业务代码的耦合度很低。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-Struts2特点："><span class="toc-text">2.Struts2特点：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-与Servlet对比："><span class="toc-text">3.与Servlet对比：</span></a></li></ol></li></ol><li class="toc-item toc-level-4"><a class="toc-link" href="#Struts2的工作流程及流程图"><span class="toc-text">Struts2的工作流程及流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#以下是Struts2的工作流程图"><span class="toc-text">以下是Struts2的工作流程图</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Struts2工作流程："><span class="toc-text">Struts2工作流程：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不同框架实现MVC的方式"><span class="toc-text">不同框架实现MVC的方式</span></a></li>
+    </div>
+  </section>
+
 
       
     
@@ -428,7 +473,7 @@
         
           <li><a class="flat-box" title="/categories/后端框架/" href="/categories/后端框架/"><div class="name">后端框架</div><div class="badge">(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/框架/" href="/categories/框架/"><div class="name">框架</div><div class="badge">(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/框架/" href="/categories/框架/"><div class="name">框架</div><div class="badge">(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/框架，总结/" href="/categories/框架，总结/"><div class="name">框架，总结</div><div class="badge">(1)</div></a></li>
         
@@ -452,7 +497,7 @@
 </header>
 
     <div class="content pure">
-      <a href="/tags/FastDFS/" style="font-size: 14px; color: #999">FastDFS</a> <a href="/tags/Hibernate/" style="font-size: 14px; color: #999">Hibernate</a> <a href="/tags/JAVA基础/" style="font-size: 14px; color: #999">JAVA基础</a> <a href="/tags/Mybatis/" style="font-size: 14px; color: #999">Mybatis</a> <a href="/tags/SpringMVC/" style="font-size: 19px; color: #777">SpringMVC</a> <a href="/tags/Struts2/" style="font-size: 14px; color: #999">Struts2</a> <a href="/tags/后端框架/" style="font-size: 14px; color: #999">后端框架</a> <a href="/tags/服务器/" style="font-size: 14px; color: #999">服务器</a> <a href="/tags/框架/" style="font-size: 24px; color: #555">框架</a>
+      <a href="/tags/FastDFS/" style="font-size: 14px; color: #999">FastDFS</a> <a href="/tags/Hibernate/" style="font-size: 14px; color: #999">Hibernate</a> <a href="/tags/JAVA基础/" style="font-size: 14px; color: #999">JAVA基础</a> <a href="/tags/Mybatis/" style="font-size: 14px; color: #999">Mybatis</a> <a href="/tags/Spring/" style="font-size: 14px; color: #999">Spring</a> <a href="/tags/SpringMVC/" style="font-size: 14px; color: #999">SpringMVC</a> <a href="/tags/Struts2/" style="font-size: 19px; color: #777">Struts2</a> <a href="/tags/后端框架/" style="font-size: 14px; color: #999">后端框架</a> <a href="/tags/服务器/" style="font-size: 14px; color: #999">服务器</a> <a href="/tags/框架/" style="font-size: 24px; color: #555">框架</a>
     </div>
   </section>
 
